@@ -41,27 +41,27 @@
     function makeNewDiv() {
         /* make the div and its text */
         let element = document.createElement("div")
-        i_value = document.getElementById("f_i").value
-        element.innerHTML = i_value
+        pvalue = document.getElementById("f_i").value
+        element.innerHTML = pvalue
         element.className = "stack"
         /* add it to the container */
         document.getElementById('target').appendChild(element)
     }
     function popItem() {
         stack_values = document.getElementsByClassName("stack")
-        i_value = document.getElementById("f_i").value
+        pvalue = document.getElementById("f_i").value
         length = stack_values.length
         if (stack_values != undefined && length > 0) {
             stack_values[length - 1].remove();
         }
     }
     function zap() {
-        i_value = document.getElementById("f_i").value;
+        pvalue = document.getElementById("f_i").value;
         stack_values = document.getElementsByClassName('stack');
         if (stack_values != undefined && stack_values.length > 0) {
             for (let i = 0; i < stack_values.length; i++) {
                 element = stack_values[i].innerHTML;
-                if (element == i_value) {
+                if (element == pvalue) {
                     console.log(stack_values[i])
                     stack_values[i].remove();
                     i--;
