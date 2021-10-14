@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Timeout page</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container-fluid align-center" align="middle">
+        <h2 style="color:darkgoldenrod;" class="display-2">Varun Kumar Bantu reaction 
+            timer</h2>
+        <p id="target" class="display-4">Your Time</p>
+        <p><img src="https://img.icons8.com/external-vitaliy-gorbachev-lineal-vitaly-gorbachev/60/000000/external-timer-support-vitaliy-gorbachev-lineal-vitaly-gorbachev.png" /><p id="countdown" class="display-4">Count</p></p>
+        <button type="button" class="btn btn-primary" onclick="startTime()">Start Timer</button>
+        <button type="button" class="btn btn-warning" onclick="recordReact()">React Now</button>
+    </div>
+    <script>
+        myTime= undefined;
+        function recordReact() {
+            myTime = Date.now();
+            console.log(myTime);
+        }
+        function startTime(){
+            for (let i = 0; i <= 3; i++) {
+                j = (3 - i) * 1000;
+                setTimeout(() => {
+                    document.getElementById("countdown").innerHTML = i;
+                }, j)
+            }
+            setTimeout(()=> {
+                if(myTime==undefined)
+                {
+                    document.getElementById("target").innerHTML = "Too Slow";
+                }
+                else{
+                    now=Date.now();
+                    differnce=now-myTime
+                    document.getElementById("target").innerHTML = "Time was " + differnce + " ms"
+                    myTime = undefined
+                }
+            },3000)
+        }
+    </script>
+
+</body>
+</html>
