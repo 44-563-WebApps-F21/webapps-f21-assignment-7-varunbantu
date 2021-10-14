@@ -43,6 +43,7 @@
     <div id="distance">
         Distance is unknown.
     </div><br>
+    <button onclick="newGame()" class="btn btn-success">Reset</button>
     <div class="container">
         <div class="row">
             <div class="col-sm-2"><img src="bush.jpg" id="img0" onclick="check(0)" alt="Animal" height="220" width="220" alt=""></div>
@@ -82,6 +83,7 @@
             "img14", "img15", "img16", "img17", "img18", "img19", "img20", "img21", "img22", "img23"];
         var triesCount = 0;
         var animalLocation = 13;
+        
         function check(position) {
             if (animalLocation == position) {
                 var change_img = document.getElementById(img_array[position])
@@ -98,20 +100,34 @@
             document.getElementById("distance").innerHTML = "Distance from onclick element to animalLocation (13) : " + distance_cal
         }
         function distance(pos1, pos2) {
-            var pos_array = [[0, 1, 2, 3, 4, 5], [6, 7, 8, 9, 10, 11], [12, 13, 14, 15, 16, 17], [18, 19, 20, 21, 22, 23]]
-            for (i = 0; i < pos_array.length; i++) {
-                for (j = 0; j < pos_array[i].length; j++) {
-                    if (pos_array[i][j] == pos1) {
+            var img_array = [[0, 1, 2, 3, 4, 5], [6, 7, 8, 9, 10, 11], [12, 13, 14, 15, 16, 17], [18, 19, 20, 21, 22, 23]]
+            for (i = 0; i < img_array.length; i++) {
+                for (j = 0; j < img_array[i].length; j++) {
+                    if (img_array[i][j] == pos1) {
                         v1 = i;
                         h1 = j;
                     }
-                    if (pos_array[i][j] == pos2) {
+                    if (img_array[i][j] == pos2) {
                         v2 = i;
                         h2 = j;
                     }
                 }
             }
             return Math.max(Math.abs(v2 - v1), Math.abs(h2 - h1))
+        }
+         function newGame() {
+            triesCount = 0;
+            animalLocation = Math.round(Math.random() * (23 - 0) + 0);
+            document.getElementById("tries").innerHTML = "Number of tries is zero";
+            distanceOfAnimal = "unknown"
+            document.getElementById("distance").innerHTML = "Distance is " + distanceOfAnimal;
+            for (var i = 0; i <= 23; i++) {
+                if(img_array[i]== img_array[animalLocation])
+                document.getElementById(img_array[i]).src = "Rabbit.jpg";
+                else
+                document.getElementById(img_array[i]).src = "bush.jpg";
+            }
+
         }
     </script>
  
