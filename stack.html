@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html> <head> <style>
+    .flex-container {
+      display: flex;  flex-direction:row;
+      background-color: red;
+  }
+
+.flex-container > div {  /*div children of the flex container*/
+  background-color: #f1f1f1; 
+  margin: 10px;  padding: 20px;  font-size: 30px;
+}
+
+/* Responsive layout */
+@media (max-width: 600px) { 
+	 .flex-container{
+		 flex-direction:column;
+		 background-color: green;
+	  }
+	}
+</style></head>
+<body>
+    <div class="container-fluid align-center" align="middle">
+        <h2 style="color: brown;" class="display-2">Varun Kumar Bantu builds a stack</h2>
+        <input type="text" class="form-control" style="text-align: center;" id="f_i" name="inputElement"
+            placeholder="Enter a Text">
+        <p class="lead" style="color: coral;"> <b><em>Press the button to create a new element of type div and then add
+                    it to the container.</em></b></p>
+        <button id="push" onclick="makeNewDiv()" class="btn btn-success">Push value</button>
+        <button id="pop" onclick="popItem()" class="btn btn-danger">Pop</button>
+        <button id="zap" onclick="zap()" class="btn btn-primary">Zap value</button>
+        <br>
+        <br>
+        <div class="flex-container" id="target">
+            <div class="stack">row item 1</div>
+            <div class="stack">row item 2</div>
+            <div class="stack">row item 3</div>
+        </div>
+    </div>
+</body>
+<script>
+    function makeNewDiv() {
+        /* make the div and its text */
+        let element = document.createElement("div")
+        i_value = document.getElementById("f_i").value
+        element.innerHTML = i_value
+        element.className = "stack"
+        /* add it to the container */
+        document.getElementById('target').appendChild(element)
+    }
+    function popItem() {
+        stack_values = document.getElementsByClassName("stack")
+        i_value = document.getElementById("f_i").value
+        length = stack_values.length
+        if (stack_values != undefined && length > 0) {
+            stack_values[length - 1].remove();
+        }
+    }
+    function zap() {
+        i_value = document.getElementById("f_i").value;
+        stack_values = document.getElementsByClassName('stack');
+        if (stack_values != undefined && stack_values.length > 0) {
+            for (let i = 0; i < stack_values.length; i++) {
+                element = stack_values[i].innerHTML;
+                if (element == i_value) {
+                    console.log(stack_values[i])
+                    stack_values[i].remove();
+                    i--;
+                }
+
+            }
+        }
+    }
+</script>
+</script>
+</html>	
